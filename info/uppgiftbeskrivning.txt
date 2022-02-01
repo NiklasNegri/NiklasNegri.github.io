@@ -1,0 +1,22 @@
+pseudokod:
+main header?? Niklas Negri CV
+h1 foto
+-src ska ligga i en folder i projteket
+-skall vara responsiva (smala skärmar = vertikalt, breda skärmar = horisontellt)
+
+h2 biografi
+-skall vara responsiva (smala skärmar = vertikalt, breda skärmar = horisontellt)
+
+h3 meriter
+-innehålla åtminstone två olika avdelningar (Utbildning och Arbetslivserfarenhet)
+-skall vara responsiva (smala skärmar = vertikalt, breda skärmar = horisontellt)
+h4 kontaktinformation
+
+designkrav:
+ingen javascript
+inga CSS ramverk skriv allt för hand från scratch
+designen är inte det viktiga i betygsättningen men ska vara godkänt snygg till sett textstorlek, marginaler, punkter till punktlistor och uppvisa lite färg och bakgrundsgrafik
+Din HTML ska vara semantisk, inklusive en beskrivning avsedd för sökmotorer.
+Din CSS ska vara definierad i en separat fil, inte inbäddad i din HTML.
+Din kod ska vara lämpligt formaterad med korrekt indentering.
+textraderna ska vara responsiva och anpassas till användarens skärm (maxgräns för stora skärmar = inte för långa)
