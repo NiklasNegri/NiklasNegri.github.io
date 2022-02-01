@@ -1,0 +1,9 @@
+h1 { 
+    color: red
+}
+li {
+    list-style-type: circle;
+}
+li#meriter {
+    list-style-type: disc;
+}
