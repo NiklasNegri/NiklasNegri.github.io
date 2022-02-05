@@ -21,6 +21,14 @@ li {
     font-size: 11;
     list-style-type: circle;
 }
+#navigation li {
+    font-size: 14;
+    font-weight: normal;
+    list-style-type: square;
+}
 p {
     font-weight: normal;
+}
+a {
+    text-decoration: none;
 }
