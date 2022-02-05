@@ -21,6 +21,10 @@ li {
     font-size: 11;
     list-style-type: circle;
 }
+#meriter {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
 #navigation li {
     font-size: 14;
     font-weight: normal;
