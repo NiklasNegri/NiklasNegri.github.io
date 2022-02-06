@@ -30,12 +30,13 @@ li {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     justify-items: center;
-}
-
-#navigation li {
     font-size: 14;
     font-weight: normal;
     list-style-type: square;
+}
+
+#navigation li {
+    
 }
 
 #biografi {
