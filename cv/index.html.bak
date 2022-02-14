@@ -6,7 +6,6 @@
     <title>CV Niklas Negri</title>
     <meta name="description" content="CV Niklas Negri">
     <link rel="stylesheet" href="style.css">   
-    <script src="js.js">defer</script>
 </head>
 <body>
     <h1 id="start">
