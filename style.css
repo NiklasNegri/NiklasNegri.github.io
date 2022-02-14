@@ -1,84 +1,83 @@
-body {
-    background-color: white;
-    color: black;
-    font-family: sans-serif;
+* {
+    box-sizing: border-box;
     padding: 10px;
-    display: grid;
-
 }
 
-h1 { 
-    color: red;
-    font-size: 25px;
-    text-align: center;
-}
-h2 {
-    margin-left: 10px;
-    color: darkred;
-    font-size: 21px;
-}
-h3 {
-    color: lightcoral;
-    font-size: 19px;
+input {
+    max-height: 40px;
+    width: auto;
 }
 
-p {
+body {
+    font-family: sans-serif;
     font-weight: normal;
-
 }
 
-li {
+h2 {
     font-weight: bold;
-    font-size: 17px;
-    list-style-type: circle;
+    font-size: 18px;
 }
 
-#navigation ul {
+#search-bar {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr 1fr;
+    justify-content: center;
     justify-items: center;
 }
 
-#navigation li {
-    font-size: 16px;
-    font-weight: normal;
-    list-style-type: square;
+#banner {
+    display: flex;
+    font-weight: bold;
+
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
 }
 
-img {
-    max-width: 100%;
-    min-width: 320px;
+#banner img {
+    max-width: 150px;
     height: auto;
-    padding: 20px;
 }
 
-#biografi {
-    display: grid;
-    align-items: start;
-    grid-template-columns: 1fr 4fr;
+#results {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-#meriter {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+#results li {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
 }
 
-#kontaktinformation p {
-    margin-left: 30px;
+#page_control {
+    display: flex;
 }
 
-@media (max-width: 900px) {
-    #navigation ul {
-        display: flex;
-        flex-direction: column;
+#page_control ul {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+}
+
+/* 
+
+responsivitet behöver fixas
+
+*/
+@media (max-width: 400px) {
+    li {
+        max-width: 250px;
+        height: auto;
     }
-    #meriter {
-        display: grid;
-        grid-template-columns: 1fr;
-    }
-    #biografi {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
 }
+ @media (max-width: 720px) {
+     #banner {
+         max-width: 550px;
+     }
+     li {
+         max-width: 550px;
+         height: auto;
+     }
+ }
