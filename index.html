@@ -8,28 +8,37 @@
     <title>Pixabay Motor</title>
 </head>
 <body>
-    <header id="banner">
+    <header class="banner">
         <h1>Pixabay Motor</h1>
         <h2> powered by</h2>
-        <img id="powered-by-logo" src="powered-by-pixabay-logo.svg">
+        <img class="powered-by-logo" src="powered-by-pixabay-logo.svg">
     </header>
     </section>
-    <section id="search-bar">
+    <section class="search-bar">
         <h2>What are you looking for today?</h2>
         <input type="text" placeholder="Enter search text">
         <label for="colors">Choose a color</label>
         <select name="colors">
+            <option value="">Any Color</option>
             <option value="blue">Blue</option>
+            <option value="green">Green</option>
             <option value="red">Red</option>
+            <option value="orange">Orange</option>
+            <option value="purple">Purple</option>
+            <option value="yellow">Yellow</option>
         </select>
-        <button type ="searchBtn">Search</button>   
+        <button type="submit" class="search-button">Search</button>   
     </section>
-    <section id="results">
+    <section class="results">
+        <!-- this part is built with javascript-->
     </section>
-    <section id="page_control">
+    <section class="page-control">
+        <button type="click" class="previous-page-button">Previous Page</button>
+        <p class="page-count"></p>
+        <button type="click" class="next-page-button">Next Page</button>
     </section>
-    <footer>
-        <p>copyright Pixabay, Niklas Negri och Oscar Fundberg</p>
+    <footer class="footer">
+        <small>copyright &copy;<a href="https://www.pixabay.com">Pixabay,</a>Niklas Negri och Oscar Fundberg</small>
     </footer>
 </body>
 </html>

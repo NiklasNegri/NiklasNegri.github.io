@@ -1,11 +1,51 @@
-function CreateAPIstring() {
-    let searchForm = document.querySelector('input');
-    let chosenColor = document.querySelector('select');
+let pageCountDisplay = document.querySelector(".page-count");
+let searchButton = document.querySelector(".search-button");
+let nextPageButton = document.querySelector(".next-page-button");
+let previousPageButton = document.querySelector(".previous-page-button")
+let pageCount = 0;
+setPageControlVisibility(pageCount);
 
-    return 'https://pixabay.com/api/?key=25628261-88fe3cd1e6d3db0e5352b21b2&q=' + 
-    chosenColor.value + '+' + searchForm.value + '&image_type=photo';
+searchButton.onclick = event => {
+    pageCount = 0;
+    pageCountDisplay.textContent = pageCount + 1;
+    fetchJson(pageCount);
+    setPageControlVisibility(pageCount+1);
+}
 
-    // needs an if statement if chosen color is empty for functionality
+nextPageButton.onclick = event => {
+    pageCount++;
+    fetchJson(pageCount);
+    pageCountDisplay.textContent = pageCount + 1;
+    setPageControlVisibility(pageCount+1);
+}
+
+previousPageButton.onclick = event => {
+    pageCount--;
+    fetchJson(pageCount);
+    pageCountDisplay.textContent = pageCount + 1;
+    setPageControlVisibility(pageCount+1);
+}
+
+function CreateAPIstring(pageCount) {
+    const searchForm = document.querySelector('input');
+    const chosenColor = document.querySelector('select');
+
+    if (pageCount < 19) {
+        return 'https://pixabay.com/api/?key=25628261-88fe3cd1e6d3db0e5352b21b2&q=' + 
+        chosenColor.value + '+' + searchForm.value + '&page=1&per_page=200';
+    }
+    else if (pageCount >= 19 && pageCount < 39) {
+        return 'https://pixabay.com/api/?key=25628261-88fe3cd1e6d3db0e5352b21b2&q=' + 
+        chosenColor.value + '+' + searchForm.value + '&page=2&per_page=200';
+    }
+    else if (pageCount >= 39 && pageCount < 50) {
+        return 'https://pixabay.com/api/?key=25628261-88fe3cd1e6d3db0e5352b21b2&q=' + 
+        chosenColor.value + '+' + searchForm.value + '&page=3&per_page=200';
+    }
+    else if (pageCount >= 50) {
+        // message user that they cant fetch more pictures
+        // becuase api limitations are 3 pages with 200 pictures per page max
+    }
 }
 
 function addPictures(imgUrl, tags, photographer, href) {
@@ -16,13 +56,11 @@ function addPictures(imgUrl, tags, photographer, href) {
     imageTags.innerText = ('Tags: ' + tags + '\n\nUser: ' + photographer);
 
     let li = document.createElement('li');
-    let results = document.querySelector('#results')
+    let results = document.querySelector(".results")
     li.appendChild(image);
     li.appendChild(imageTags);
     results.append(li);
 
-    // klicka på bilden = gå till bildens pixabay url
-    // fixa historik så man kan gå tillbaka till tidigare sökning + sida ??
     li.onclick = event => {
         window.location.href = href;
     }
@@ -35,21 +73,37 @@ function deletePictures() {
     });
 }
 
-async function fetchJson() {
-    const response = await fetch(CreateAPIstring());
-    const data = await response.json()
+async function fetchJson(pageCount) {
+    deletePictures();
+    let response = await fetch(CreateAPIstring(pageCount));
+    let data = await response.json()
+
+    if (pageCount < 19) {
+        arrayPos = pageCount * 10;
+    }
+    else if (pageCount >= 19 && pageCount < 39) {
+        arrayPos = (pageCount - 19) * 10;
+    }
+    else if (pageCount >= 39 && pageCount < 50) {
+        arrayPos = (pageCount - 39) * 10; 
+    }
+
     for (var i = 0; i < 10; i++) {
-        // console.log(data.hits[i]);
-        addPictures(data.hits[i].webformatURL, data.hits[i].tags, data.hits[i].user, data.hits[i].pageURL);
+        addPictures(data.hits[i+arrayPos].webformatURL, data.hits[i+arrayPos].tags, data.hits[i+arrayPos].user, data.hits[i+arrayPos].pageURL);
     }
 }
 
-let pageControl = document.querySelector('#page_control');
-
-let searchButton = document.querySelector('button');
-searchButton.onclick = event => {
-    // deletes pics from old search first before adding new ones
-    deletePictures();
-    // get the json data from api by sending 
-    fetchJson();
+function setPageControlVisibility(pageCount) {
+    if (pageCount === 0) {
+        previousPageButton.setAttribute("disabled", "disabled");
+        nextPageButton.setAttribute("disabled", "disabled");
+    }
+    else if (pageCount === 1) {
+        previousPageButton.setAttribute("disabled", "disabled");
+        nextPageButton.removeAttribute("disabled");
+    }
+    else if (pageCount > 1) {
+        previousPageButton.removeAttribute("disabled");
+        nextPageButton.removeAttribute("disabled");
+    }
 }
