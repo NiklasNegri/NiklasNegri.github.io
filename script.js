@@ -1,94 +1,168 @@
-const pageCountDisplay = document.querySelector(".page-number");
-const nextPageButton = document.querySelector(".next-page-button");
-const previousPageButton = document.querySelector(".previous-page-button");
-const results = document.querySelector(".results");
-const searchForm = document.querySelector('input');
-const chosenColor = document.querySelector('select');
-previousPageButton.setAttribute("disabled", "disabled");
-nextPageButton.setAttribute("disabled", "disabled");
-let form = document.querySelector('form')
+const todoList = document.querySelector(".todo-list");
+const newTodoInput = document.querySelector(".new-todo-input");
+const newTodoForm = document.querySelector(".new-todo-form");
+const clearAllButton = document.querySelector(".clear-all-button");
+const itemsLeft = document.querySelector(".items-left");
+const itemsShowAllButton = document.querySelector(".items-show-all");
+const itemsActiveButton = document.querySelector(".items-active");
+const itemsCompletedButton = document.querySelector(".items-completed");
+const toggleAll = document.querySelector("#toggle-all");
+const toggleLabel = document.querySelector(".toggle-label");
+const filters = document.querySelector(".filters");
 
-form.onsubmit = event => {
+let completedItems = 0;
+let uncompletedItems = 0;
+filters.style.display = 'none';
+
+newTodoForm.onsubmit = event => {
     event.preventDefault();
-    if (chosenColor.value === "") {
-        searchIdString = searchForm.value;
+    if (newTodoInput.value) {
+        addTodo(newTodoInput.value);
+        setFilter("all");
+        toggleAll.checked = false;
+        newTodoInput.value = '';
+    }
+}
+
+clearAllButton.onclick = event => {
+    clearAllButton.hidden = true;
+    for (let c of document.querySelector(".todo-list").querySelectorAll('input[type="checkbox"]')) {
+        if (c.checked) {
+            c.parentNode.parentNode.removeChild(c.parentNode);
+            completedItems--;
+        }
+    }
+    displayItemsLeft();
+}
+
+toggleAll.onclick = event => {
+    if (toggleAll.checked) {
+        for (let c of document.querySelector(".todo-list").querySelectorAll('input[type="checkbox"]')) {
+            if (!c.checked) {
+                c.checked = true;
+                uncompletedItems--;
+                completedItems++
+                c.parentElement.setAttribute("class", "completed");
+            }
+        }
     }
     else {
-        searchIdString = searchForm.value + '&colors=' + chosenColor.value;
-    }
-    pageCount = 1;
-    start(pageCount);
-}
-
-nextPageButton.onclick = event => {
-    pageCount++;
-    start(pageCount);
-}
-
-previousPageButton.onclick = event => {
-    pageCount--;
-    start(pageCount);
-}
-
-async function start(pageCount) {
-    deletePictures();
-    fetchJson(pageCount);
-    pageCountDisplay.textContent = pageCount;
-    setPageControlVisibility(pageCount);
-}
-
-async function fetchJson(pageCount) {
-    const query = 'https://pixabay.com/api/?key=';
-    const apiKey = '25628261-88fe3cd1e6d3db0e5352b21b2';
-    const fullQuery = query + apiKey + '&q=' + searchIdString + '&page=' + pageCount + '&per_page=10';
-    let response = await fetch(fullQuery);
-    let data = await response.json();
-
-    for (var i = 0; i < 10; i++) {
-        if (data.hits[i] != undefined) {
-            addPictures(data.hits[i].webformatURL, data.hits[i].tags, data.hits[i].user);
-        }
-        else if (data.hits[i] === undefined && i === 9) {
-            nextPageButton.setAttribute("disabled", "disabled");
-            const endOfResults = document.createElement('li');
-            endOfResults.textContent = ('You have reached the end of the results');
-            endOfResults.style.color = "white";
-            endOfResults.style.fontSize = "x-large";
-            results.append(endOfResults);
+        for (let c of document.querySelector(".todo-list").querySelectorAll('input[type="checkbox"]')) {
+            c.checked = false;
+            uncompletedItems++;
+            completedItems--;
+            c.parentElement.removeAttribute("class");
         }
     }
+    displayItemsLeft();
+    displayClearAllButton();
 }
 
-function addPictures(imgUrl, tags, photographer) {
-    let image = document.createElement('img');
-    image.setAttribute("src", imgUrl);
-
-    let imageTags = document.createElement('p');
-    imageTags.innerText = ('Tags: ' + tags + '\n\nUser: ' + photographer);
-
-    let li = document.createElement('li');
-    li.appendChild(image);
-    li.appendChild(imageTags);
-    results.append(li);
+itemsActiveButton.onclick = event => {
+    setFilter("active");
 }
-
-function deletePictures() {
-    let liElements = document.querySelectorAll('li');
-    liElements.forEach(li => {
-        li.remove();
-    });
+itemsCompletedButton.onclick = event => {
+    setFilter("completed");
 }
+itemsShowAllButton.onclick = event => {
+    setFilter("all");
+}
+function addTodo(todoText) {
+    let liCheckbox = document.createElement('input');
+    liCheckbox.type = 'checkbox';
+    let liText = document.createElement('p');
+    liText.textContent = todoText;
+    let liRemoveButton = document.createElement('button');
+    liRemoveButton.type = 'button';
+    liRemoveButton.textContent = '❌';
 
-function setPageControlVisibility(pageCount) {
-    if (pageCount === 1) {
-        previousPageButton.setAttribute("disabled", "disabled");
-        nextPageButton.removeAttribute("disabled");
+    let liElement = document.createElement('li');
+    liElement.append(liCheckbox);
+    liElement.append(liText);
+    liElement.append(liRemoveButton);
+    todoList.append(liElement);
+
+    uncompletedItems++;
+    displayItemsLeft();
+    filters.style.display = 'flex';
+
+    liRemoveButton.onclick = event => {
+        if (!liCheckbox.checked) {
+            uncompletedItems--;
+        }
+        else {
+            completedItems--;
+        }
+        liElement.remove();
+        displayItemsLeft();
+        displayClearAllButton();
     }
-    else if (pageCount === 2) {
-        previousPageButton.removeAttribute("disabled");
-        nextPageButton.removeAttribute("disabled");
+    liCheckbox.onchange = event => {
+        if (liCheckbox.checked) {
+            completedItems++;
+            uncompletedItems--;
+            liElement.setAttribute("class", "completed");
+        }
+        else {
+            completedItems--;
+            uncompletedItems++;
+            liElement.removeAttribute("class");
+        }
+        displayItemsLeft();
+        displayClearAllButton();
     }
-    else if (pageCount === 51) {
-        nextPageButton.setAttribute("disabled", "disabled");
+}
+function displayClearAllButton() {
+    if (completedItems > 0) {
+        clearAllButton.hidden = false;
+    }
+    else if (completedItems === 0) {
+        clearAllButton.hidden = true;
+    }
+}
+function displayItemsLeft() {
+    if (uncompletedItems === 0 && completedItems === 0) {
+        toggleAll.hidden = true;
+        toggleAll.checked = false;
+        toggleLabel.hidden = true;
+        filters.style.display = 'none';
+        itemsLeft.textContent = '0 items left';
+    }
+    else if (uncompletedItems === 1) {
+        toggleAll.hidden = false;
+        toggleLabel.hidden = false;
+        itemsLeft.textContent = uncompletedItems + ' item left';
+    }
+    else {
+        toggleAll.hidden = false;
+        toggleLabel.hidden = false;
+        itemsLeft.textContent = uncompletedItems + ' items left';
+    }
+}
+function setFilter(newFilter) {
+    if (newFilter === "all") {
+        for (let c of document.querySelector(".todo-list").querySelectorAll('input[type="checkbox"]')) {
+            c.parentNode.style.display = 'flex';
+        }
+    }
+    else if (newFilter === "active") {
+        for (let c of document.querySelector(".todo-list").querySelectorAll('input[type="checkbox"]')) {
+            if (!c.checked) {
+                c.parentNode.style.display = 'flex';
+            }
+            else {
+                c.parentNode.style.display = 'none';
+            }
+        }
+    }
+    else if (newFilter === "completed") {
+        for (let c of document.querySelector(".todo-list").querySelectorAll('input[type="checkbox"]')) {
+            if (!c.checked) {
+                c.parentNode.style.display = 'none';
+            }
+            else {
+                c.parentNode.style.display = 'flex';
+            }
+        }
     }
 }

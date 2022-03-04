@@ -1,0 +1,162 @@
+* {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-style: oblique;
+    font-weight: bold;
+    text-align: center;
+}
+
+body {
+    background-image: url('https://i.pinimg.com/originals/71/9e/80/719e80760999b4c355a723224120eb07.png');
+}
+
+.headline {
+    font-size: 60px;
+}
+
+.creators {
+    font-size: 20px;
+}
+
+.powered-by-pixabay {
+    font-size: 15px;
+    color: gray;
+    padding-bottom: 25px;
+}
+
+.search-bar {
+    display: grid;
+    grid-template:
+        "a b c"/ 3fr 2fr 1fr;
+
+    list-style-type: none;
+
+    margin-left: auto;
+    margin-right: auto;
+    width: 600px;
+}
+
+.search-bar input, .search-bar select, .search-bar button {
+    font-size: 20px;
+}
+
+@media (min-width: 1650px) {
+    .results {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+
+        margin-left: auto;
+        margin-right: auto;
+
+        list-style-type: none;
+    }
+}
+
+@media (max-width: 1650px) {
+    .results {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+
+        margin-left: auto;
+        margin-right: auto;
+
+        list-style-type: none;
+    }
+}
+
+@media (max-width: 1250px) {
+    .results {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+        margin-left: auto;
+        margin-right: auto;
+
+        list-style-type: none;
+    }
+}
+
+@media (max-width: 850px) {
+    .results {
+        display: grid;
+        grid-template-columns: 1fr;
+
+        margin-left: auto;
+        margin-right: auto;
+        list-style-type: none;
+    }
+
+    .search-bar {
+        display: grid;
+        grid-template:
+            "a"
+            "b"
+            "c"/ 1fr;
+
+        list-style-type: none;
+
+        margin-left: auto;
+        margin-right: auto;
+        width: 380px;
+    }
+}
+
+
+@media (max-width: 1650px) {
+    .results img {
+        width: 380px;
+        height: 290px;
+
+        display: block;
+
+        margin-left: auto;
+        margin-right: auto;
+
+        padding-bottom: 20px;
+
+        /* Used to center the results */
+        padding-right: 40px;
+
+    }
+}
+
+@media (min-width: 1650px) {
+    .results img {
+        width: 380px;
+        height: 290px;
+
+        display: block;
+
+        margin-left: auto;
+        margin-right: auto;
+
+        padding-bottom: 20px;
+    }
+}
+
+
+.bottom-buttons {
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr;
+    width: 400px;
+
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.bottom-buttons button {
+    font-size: 20px;
+}
+
+.page-number {
+    font-size: 35px;
+}
+
+p {
+    font-size: 15px;
+}
+
+.footer {
+    font-size: 20px;
+    padding: 5px;
+}
