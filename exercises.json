@@ -1,0 +1,26 @@
+[
+    {
+        "title": "Sit Up",
+        "time": 2,
+        "calories": 0.2,
+        "reps": 1
+    },
+    {
+        "title": "Push Up",
+        "time": 1,
+        "calories": 0.3,
+        "reps": 1
+    },
+    {
+        "title": "Burpee",
+        "time": 4,
+        "calories": 1,
+        "reps": 1
+    },
+    {
+        "title": "Lunge",
+        "time": 3,
+        "calories": 0.1,
+        "reps": 1
+    }
+]
