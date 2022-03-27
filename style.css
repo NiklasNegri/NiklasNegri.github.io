@@ -22,6 +22,7 @@ h1 {
     font-size: 50px;
     font-weight: bold;
     text-align: center;
+    text-shadow: 2px 2px 3px orangered, 4px 4px 5px yellow;
 }
 
 h2 {
@@ -62,6 +63,7 @@ button {
     font-weight: 600;
     border: 2px solid black;
     border-radius: 8px;
+    box-shadow: 1px 1px 6px orangered, 1px 1px 6px yellow;
 }
 
 .pageControl button {
@@ -86,6 +88,7 @@ input {
     border: 2px solid black;
     border-radius: 8px;
     font-weight: bold;
+    box-shadow: 1px 1px 6px orangered, 1px 1px 6px yellow;
 }
 
 footer p {
