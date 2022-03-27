@@ -18,14 +18,14 @@
                 <li>
                     <button @click="changePage('home')">Home</button>
                     <button @click="changePage('exercises')">Exercises</button>
-                    <button @click="changePage('createSchedule')">Create Schedule</button>
+                    <button class="createScheduleBtn" @click="changePage('createSchedule')">Create Schedule</button>
                     <button @click="changePage('generateSchedule')">Generate Schedule</button>
                 </li>
             </ul>
         </div>
         <section class="pages">
             <!-- homepage, contains info on how to use site -->
-            <div v-show="page === 'home'">
+            <div class="home" v-show="page === 'home'">
                 <h2>Homepage</h2>
                 <p>Exercises shows current exercises and lets you add more</p>
                 <p>Create schedule lets you manually enter exercises into a new workout schedule</p>
@@ -33,84 +33,93 @@
                 <p>Press speak at the bottom of your schedule to have it read out aloud for you</p>
             </div>
             <!-- page to show exercises, add and remove them -->
-            <div class="exercises" v-show="page === 'exercises'">
-                <ol>
-                    <h2>Exercises</h2>
-                    <li v-for="exercise in exercises">
-                        <h2>{{ exercise.title }}</h2>
-                        <p>Time per rep: {{ exercise.time }}s</p>
-                        <p>Calories burned per rep: {{ exercise.calories }} calories</p>
-                        <button @click="removeExercise(exercise)">Remove Exercise</button>
-                    </li>
-                </ol>
-                <ul>
-                    <li>
-                        <h2>Add Exercise</h2>
-                        <input type="text" v-model="newTitle" placeholder="Enter exercise title">
-                        <p>Enter time per rep: <input type="number" v-model="newTime"></p>
-                        <p>Enter calories burned per rep: <input type="number" v-model="newCalories"></p>
-                        <button @click="addNewExercise()">Add Exercise</button>
-                    </li>
-                    <button @click="clearExercises()">Reset Exercises</button>
-                </ul>
-            </div>
-            <!-- create schedule page, lets user manually create their own schedule -->
-            <div class="createSchedule" v-show="page === 'createSchedule'">
-                <section class="available-exercises">
+            <section class="non-home-pages">
+                <div class="exercises" v-show="page === 'exercises'">
                     <ol>
                         <h2>Exercises</h2>
                         <li v-for="exercise in exercises">
                             <h2>{{ exercise.title }}</h2>
-                            <p>Time per rep:
-                                <span class="timeEach">{{ exercise.time }}</span>s
-                            </p>
-                            <p>Calories burned per rep:
-                                <span class="caloriesEach">{{ exercise.calories }}</span> calories
-                            </p>
-                            <p>Enter reps: <input type="number" v-model="exercise.reps" min="1" max="100" step="1"></p>
-                            <button class="addBtn" @click="addToSchedule(exercise)">Add to workout schedule</button>
+                            <p>Time per rep: {{ exercise.time }}s</p>
+                            <p>Calories burned per rep: {{ exercise.calories }} calories</p>
+                            <button @click="removeExercise(exercise)">Remove Exercise</button>
                         </li>
                     </ol>
-                </section>
-            </div>
-            <!-- generate a schedule based on desired duration -->
-            <div class="generateSchedule" v-show="page === 'generateSchedule'">
-                <p>Enter schedule duration in seconds</p>
-                <input type="number" v-model="generateTime">
-                <p>Enter max amount of reps per exercise</p>
-                <input type="number" v-model="generateMaxReps">
-                <button @click="generateSchedule()">Generate Schedule</button>
-            </div>
-            <!-- schedule is not tied to a page to reduce repeating code -->
-            <div class="scheduled-exercises" v-show="schedule.length">
-                <ol>
-                    <h2>Schedule</h2>
-                    <li v-for="s in schedule">
-                        <h4>{{ s.title }}</h4>
-                        <p>Reps: {{ s.reps }}</p>
-                        <p>Time: {{ s.time * s.reps }}s</p>
-                        <p>Calories burned: {{ s.calories * s.reps }}</p>
-                        <button class="removeBtn" @click="removeFromSchedule(s)">Remove from Schedule</button>
-                    </li>
-                    <div class="schedule-control">
-                        <div class="speech-control">
-                            <button @click="speakExercise()">Speak</button>
-                            <button @click="speakPause()" v-shoW="isSpeaking">Pause</button>
-                            <button class="resumeBtn" @click="speakResume()" v-show="!isSpeaking" hidden>Play</button>
+                    <ul>
+                        <li>
+                            <h2>Add Exercise</h2>
+                            <input type="text" v-model="newTitle" placeholder="Enter exercise title">
+                            <p>Enter time per rep: <input type="number" v-model="newTime"></p>
+                            <p>Enter calories burned per rep: <input type="number" v-model="newCalories"></p>
+                            <button @click="addNewExercise()">Add Exercise</button>
+                        </li>
+                        <button @click="clearExercises()">Reset Exercises</button>
+                    </ul>
+                </div>
+                <!-- create schedule page, lets user manually create their own schedule -->
+                <div class="createSchedule" v-show="page === 'createSchedule'">
+                    <section class="available-exercises">
+                        <ol>
+                            <h2>Exercises</h2>
+                            <li v-for="exercise in exercises">
+                                <h2>{{ exercise.title }}</h2>
+                                <p>Time per rep:
+                                    <span class="timeEach">{{ exercise.time }}</span>s
+                                </p>
+                                <p>Calories burned per rep:
+                                    <span class="caloriesEach">{{ exercise.calories }}</span> calories
+                                </p>
+                                <p>Enter reps: <input type="number" v-model="exercise.reps" min="1" max="100" step="1"></p>
+                                <button class="addBtn" @click="addToSchedule(exercise)">Add to workout schedule</button>
+                            </li>
+                        </ol>
+                    </section>
+                </div>
+                <!-- generate a schedule based on desired duration -->
+                <div class="generateSchedule" v-show="page === 'generateSchedule'">
+                    <p>Enter schedule duration in seconds</p>
+                    <input type="number" v-model="generateTime">
+                    <p>Enter max amount of reps per exercise</p>
+                    <input type="number" v-model="generateMaxReps">
+                    <button @click="generateSchedule()">Generate Schedule</button>
+                </div>
+                <!-- schedule is not tied to a page to reduce repeating code -->
+                <div class="scheduled-exercises" v-show="schedule.length">
+                    <ol v-show="page != 'home'">
+                        <h2>Schedule</h2>
+                        <li v-for="s in schedule">
+                            <h4>{{ s.title }}</h4>
+                            <p>Reps: {{ s.reps }}</p>
+                            <p>Time: {{ s.time * s.reps }}s</p>
+                            <p>Calories burned: {{ s.calories * s.reps }}</p>
+                            <button class="removeBtn" @click="removeFromSchedule(s)">Remove from Schedule</button>
+                        </li>
+                        <div class="schedule-control">
+                            <div class="speech-control">
+                                <button @click="speakExercise()">Speak</button>
+                                <button @click="speakPause()" v-shoW="isSpeaking">Pause</button>
+                                <button class="resumeBtn" @click="speakResume()" v-show="!isSpeaking" hidden>Play</button>
+                            </div>
+                            <button @click="clearSchedule()">Clear Schedule</button>
+                            <h3>Total time to complete schedule:
+                                <span class="totalTime">{{ totalTime }}</span>s
+                            </h3>
+                            <h3>Total calories burned:
+                                <span class="totalCalories">{{ totalCalories }}</span> calories
+                            </h3>
                         </div>
-                        <button @click="clearSchedule()">Clear Schedule</button>
-                        <h3>Total time to complete schedule:
-                            <span class="totalTime">{{ totalTime }}</span>s
-                        </h3>
-                        <h3>Total calories burned:
-                            <span class="totalCalories">{{ totalCalories }}</span> calories
-                        </h3>
-                    </div>
-                </ol>
-            </div>
+                    </ol>
+                </div>
+            </section>
+
         </section>
     </div>
+
+
     <script src="app.js"></script>
 </body>
+
+<footer>
+    <p>Created by Niklas Negri and Oscar Fundberg</p>
+</footer>
 
 </html>

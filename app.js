@@ -80,8 +80,7 @@ Vue.createApp({
                     this.totalTime += (copy.reps * copy.time);
                     this.totalCalories += (copy.reps * copy.calories);
                     this.totalCalories = parseFloat(this.totalCalories.toFixed(2));
-                }
-                else {
+                } else {
                     let remainingTime = this.generateTime - this.totalTime;
                     copy.reps = remainingTime / copy.time;
                     copy.reps = Math.round(copy.reps);
@@ -97,10 +96,14 @@ Vue.createApp({
         },
         speakExercise() {
             speechSynthesis.cancel();
+            let exerciseCount = 1;
+            speechSynthesis.speak(new SpeechSynthesisUtterance('Starting new workout schedule'));
             for (exercise of this.schedule) {
+                speechSynthesis.speak(new SpeechSynthesisUtterance('Exercise ' + exerciseCount));
                 speechSynthesis.speak(new SpeechSynthesisUtterance(exercise.title));
                 speechSynthesis.speak(new SpeechSynthesisUtterance('Amount of reps ' + exercise.reps));
-                speechSynthesis.speak(new SpeechSynthesisUtterance('Time to complete in ' + (exercise.time * exercise.reps) + ' seconds')); 
+                speechSynthesis.speak(new SpeechSynthesisUtterance('Time to complete in ' + (exercise.time * exercise.reps) + ' seconds'));
+                exerciseCount++;
                 for (let i = 0; i < (exercise.time * exercise.reps); i++) {
                     let count = i + 1;
                     speechSynthesis.speak(new SpeechSynthesisUtterance(count));
@@ -118,11 +121,10 @@ Vue.createApp({
             speechSynthesis.resume();
         }
     },
-    mounted: async function () {
+    mounted: async function() {
         if (!localStorage.getItem('exercises')) {
             this.fetchExercises();
-        }
-        else {
+        } else {
             this.exercises = JSON.parse(localStorage.getItem('exercises'));
         }
         if (localStorage.getItem('schedule')) {
