@@ -19,7 +19,7 @@
                     <button @click="changePage('home')">Home</button>
                     <button @click="changePage('exercises')">Exercises</button>
                     <button class="createScheduleBtn" @click="changePage('createSchedule')">Create Schedule</button>
-                    <button @click="changePage('generateSchedule')">Generate Schedule</button>
+                    <button class="generateScheduleBtn" @click="changePage('generateSchedule')">Generate Schedule</button>
                 </li>
             </ul>
         </div>
@@ -77,16 +77,16 @@
                 <!-- generate a schedule based on desired duration -->
                 <div class="generateSchedule" v-show="page === 'generateSchedule'">
                     <p>Enter schedule duration in seconds</p>
-                    <input type="number" v-model="generateTime">
+                    <input class="timeInput" type="number" v-model="generateTime">
                     <p>Enter max amount of reps per exercise</p>
                     <input type="number" v-model="generateMaxReps">
-                    <button @click="generateSchedule()">Generate Schedule</button>
+                    <button class="generateBtn" @click="generateSchedule()">Generate Schedule</button>
                 </div>
                 <!-- schedule is not tied to a page to reduce repeating code -->
                 <div class="scheduled-exercises" v-show="schedule.length">
                     <ol v-show="page != 'home'">
                         <h2>Schedule</h2>
-                        <li v-for="s in schedule">
+                        <li class="scheduled" v-for="s in schedule">
                             <h4>{{ s.title }}</h4>
                             <p>Reps: {{ s.reps }}</p>
                             <p>Time: {{ s.time * s.reps }}s</p>
@@ -99,7 +99,7 @@
                                 <button @click="speakPause()" v-shoW="isSpeaking">Pause</button>
                                 <button class="resumeBtn" @click="speakResume()" v-show="!isSpeaking" hidden>Play</button>
                             </div>
-                            <button @click="clearSchedule()">Clear Schedule</button>
+                            <button class="clearScheduleBtn" @click="clearSchedule()">Clear Schedule</button>
                             <h3>Total time to complete schedule:
                                 <span class="totalTime">{{ totalTime }}</span>s
                             </h3>

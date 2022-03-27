@@ -65,9 +65,37 @@ Vue.createApp({
             this.page = page;
         },
         async fetchExercises() {
-            let response = await fetch('exercises.json');
-            let json = await response.json();
-            this.exercises = json;
+            // funkar inte med fetch i edge så testarna failar där, får hardkoda exercises istället..
+            //let response = await fetch('exercises.json');
+            //let json = await response.json();
+
+            const hardCodedExercises = [
+                {
+                    "title": "Sit Up",
+                    "time": 2,
+                    "calories": 0.2,
+                    "reps": 1
+                },
+                {
+                    "title": "Push Up",
+                    "time": 1,
+                    "calories": 0.3,
+                    "reps": 1
+                },
+                {
+                    "title": "Burpee",
+                    "time": 4,
+                    "calories": 1,
+                    "reps": 1
+                },
+                {
+                    "title": "Lunge",
+                    "time": 3,
+                    "calories": 0.1,
+                    "reps": 1
+                }
+            ]
+            this.exercises = hardCodedExercises;
         },
         generateSchedule() {
             while (this.totalTime < this.generateTime) {
