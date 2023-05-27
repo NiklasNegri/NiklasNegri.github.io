@@ -2,20 +2,18 @@ const Education = () => {
     return (
         <div id="education-section">
             <div className="experience-container">
-                <h2>Education</h2>
                 <div className="flex-experience">
-                    <div className="experience-text">
+                    <div className="experience-title">
+                        <h2>Education</h2>
                         <h3>.NET developer</h3>
                         <h4>Teknikhögskolan Göteborg</h4>
                         <p>August 2021 - June 2023</p>
                     </div>
                     <div className="experience-text">
-                        <p>
-                            Did two internships at Antura AB where I worked with their live production code
-                            as a member of one of their two backend teams. I worked mainly with C# and T-SQL
-                            and both fixed buggs and wrote new features depending on what the product owners
-                            had in store for us.
-                        </p>
+                        <p>•Backend in .NET 6 creating Web Apis with ASP.NET Core and Entity Framework Core</p>
+                        <p>•Basic frontend with HTML, CSS and JavaScript and some work in Vue</p>
+                        <p>•Agile development in Azure with Azure Board and Pipelines for CI/CD</p>
+                        <p>•Hosting an MVC application with ASP.NET Core to Azure Webb App Service</p>
                     </div>
                 </div>
             </div>
