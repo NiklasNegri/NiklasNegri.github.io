@@ -1,1 +1,1 @@
-This is a starter template for [Learn Next.js](https://nextjs.org/learn).
+A basic portfolio hosted on GitHub pages, created with React and Next.js.
