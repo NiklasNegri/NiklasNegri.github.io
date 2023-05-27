@@ -1,14 +1,13 @@
-const Experience = () => {
+const Education = () => {
     return (
-        <div id="experience-section">
+        <div id="education-section">
             <div className="experience-container">
-                <h2>Experience</h2>
+                <h2>Education</h2>
                 <div className="flex-experience">
                     <div className="experience-text">
-                        <h3>Internship</h3>
-                        <h3>Backend developer, Antura AB</h3>
-                        <p>October 2022 - December 2022</p>
-                        <p>February 2023 - May 2023</p>
+                        <h3>.NET developer</h3>
+                        <h4>Teknikhögskolan Göteborg</h4>
+                        <p>August 2021 - June 2023</p>
                     </div>
                     <div className="experience-text">
                         <p>
@@ -24,4 +23,4 @@ const Experience = () => {
     )
 }
 
-export default Experience;
+export default Education;

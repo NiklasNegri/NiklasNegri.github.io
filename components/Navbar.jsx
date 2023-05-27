@@ -10,6 +10,9 @@ const Navbar = () => {
                 <Link href="#experience-section">Experience</Link>
             </span>
             <span>
+                <Link href="#education-section">Education</Link>
+            </span>
+            <span>
                 <Link href="#skills-section">Skills</Link>
             </span>
             <span>
