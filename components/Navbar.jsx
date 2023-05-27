@@ -4,9 +4,6 @@ const Navbar = () => {
     return (
         <div className="nav-container">
             <span>
-                <Link href="/">Top</Link>
-            </span>
-            <span>
                 <Link href="#about-section">About Me</Link>
             </span>
             <span>
