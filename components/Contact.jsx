@@ -11,7 +11,7 @@ const Contact = () => {
                 <div className="social_icons">
                     <a
                         href="mailto:niklas.negri@gmail.com">
-                        <Image src="/images/icongmail.svg" width={50} height={50} />
+                        <Image src="/images/icongmail.svg" width={55} height={55} />
                     </a>
                     <a
                         href="https://www.linkedin.com/in/niklas-negri-7a09a8236/"
