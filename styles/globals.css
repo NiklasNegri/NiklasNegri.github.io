@@ -146,6 +146,11 @@ li {
   gap: 0 2rem;
 }
 
+.experience-container .flex-experience .experience-title {
+  margin-bottom: auto;
+  width: 50%;
+}
+
 .experience-container .flex-experience .experience-text {
   width: 50%;
 }
@@ -197,49 +202,19 @@ li {
   font-size: 1.5rem;
 }
 
-.skills-container .grid-skills .csharp:hover {
+.skills-container .grid-skills .purple:hover {
   background-color: #c857bde2;
 }
 
-.skills-container .grid-skills .dotnet6:hover {
-  background-color: #c857bde2;
-}
-
-.skills-container .grid-skills .efcore:hover {
-  background-color: #c857bde2;
-}
-
-.skills-container .grid-skills .visualstudio:hover {
-  background-color: #c857bde2;
-}
-
-.skills-container .grid-skills .sql:hover {
-  background-color: #4965d4;
-}
-.skills-container .grid-skills .atlassian:hover {
-  background-color: #4965d4;
-}
-.skills-container .grid-skills .css:hover {
+.skills-container .grid-skills .blue:hover {
   background-color: #4965d4;
 }
 
-.skills-container .grid-skills .azure:hover {
-  background-color: #4965d4;
-}
-
-.skills-container .grid-skills .ssms:hover {
+.skills-container .grid-skills .yellow:hover {
   background-color: #F7DF1E;
 }
 
-.skills-container .grid-skills .js:hover {
-  background-color: #F7DF1E;
-}
-
-.skills-container .grid-skills .nextjs:hover {
-  background-color: #878585;
-}
-
-.skills-container .grid-skills .html:hover {
+.skills-container .grid-skills .grey:hover {
   background-color: #878585;
 }
 
@@ -274,7 +249,7 @@ li {
 
 .project-card .project-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: flex-start;
   margin-bottom: 20px;
 }
@@ -301,11 +276,12 @@ li {
 
 .project-card .project h3 {
   font-size: 20px;
-  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 .project-card .project p {
   font-size: 16px;
+  margin-top: 10px;
   margin-bottom: 10px;
   color: #b3b3b3;
 }
