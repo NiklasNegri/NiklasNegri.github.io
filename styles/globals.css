@@ -134,6 +134,11 @@ li {
   margin: 5px 0px;
 }
 
+.experience-container h4 {
+  font-size: 18px;
+  margin: 5px 0px;
+}
+
 .experience-container .flex-experience {
   display: flex;
   justify-content: space-between;
@@ -193,11 +198,11 @@ li {
 }
 
 .skills-container .grid-skills .csharp:hover {
-  background-color: #960688e2;
+  background-color: #c857bde2;
 }
 
 .skills-container .grid-skills .dotnet6:hover {
-  background-color: #b00aa0;
+  background-color: #c857bde2;
 }
 
 .skills-container .grid-skills .efcore:hover {
@@ -205,21 +210,21 @@ li {
 }
 
 .skills-container .grid-skills .visualstudio:hover {
-  background-color: #d37ccbe2;
+  background-color: #c857bde2;
 }
 
 .skills-container .grid-skills .sql:hover {
-  background-color: #1a40da;
+  background-color: #4965d4;
 }
 .skills-container .grid-skills .atlassian:hover {
-  background-color: #3652c0;
+  background-color: #4965d4;
 }
 .skills-container .grid-skills .css:hover {
   background-color: #4965d4;
 }
 
-.skills-container .grid-skills .react:hover {
-  background-color: #1a40da;
+.skills-container .grid-skills .azure:hover {
+  background-color: #4965d4;
 }
 
 .skills-container .grid-skills .ssms:hover {
@@ -227,7 +232,7 @@ li {
 }
 
 .skills-container .grid-skills .js:hover {
-  background-color: #e2d047;
+  background-color: #F7DF1E;
 }
 
 .skills-container .grid-skills .nextjs:hover {

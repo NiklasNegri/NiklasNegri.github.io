@@ -34,9 +34,9 @@ const Skills = () => {
                         <Image src="/images/iconcss.svg" width={35} height={35} />
                         <p>CSS</p>
                     </div>
-                    <div className="skill-card react">
-                        <Image src="/images/iconreact.svg" width={35} height={35} />
-                        <p>React</p>
+                    <div className="skill-card azure">
+                        <Image src="/images/iconazure.svg" width={35} height={35} />
+                        <p>Azure</p>
                     </div>
                     <div className="skill-card ssms">
                         <Image src="/images/iconssms.png" width={35} height={35} />
