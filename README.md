@@ -1,1 +1,1 @@
-A basic portfolio hosted on GitHub pages, created with React and Next.js.
+A simple one-page Next.js application that uses Static Site Generation without data. Hosted on GitHub pages with worksflows.

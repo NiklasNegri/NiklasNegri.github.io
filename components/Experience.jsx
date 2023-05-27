@@ -5,7 +5,7 @@ const Experience = () => {
                 <div className="flex-experience">
                     <div className="experience-title">
                         <h2>Experience</h2>
-                        <h3>Internship</h3>
+                        <h3>Internships</h3>
                         <h3>Backend developer, Antura AB</h3>
                         <p>October 2022 - December 2022</p>
                         <p>February 2023 - May 2023</p>
