@@ -261,7 +261,7 @@ li {
 
 .project-header .small-icons {
   display: flex;
-  gap: 0 5px;
+  gap: 20px;
 }
 
 .project-card .small-icons a {
@@ -274,9 +274,9 @@ li {
   color: #FFCC17;
 }
 
-.project-card .project h3 {
-  font-size: 20px;
-  margin-top: 10px;
+.project-card a h3 {
+  font-size: 19px;
+  
 }
 
 .project-card .project p {

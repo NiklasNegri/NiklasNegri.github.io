@@ -3,17 +3,19 @@ import Image from "next/image";
 const projectData = [
     {
         id: 1,
-        title: 'Curriculum Vitae',
+        title: 'My Portfolio',
         description:
             'A simple one-page Next.js application that uses Static Site Generation without data. Hosted on GitHub pages with worksflows.',
         gitHubLink: 'https://github.com/NiklasNegri/NiklasNegri.github.io',
+        skillIcons: ["/images/iconnextjs.svg", "/images/iconjs.svg", "/images/iconcss.svg"]
     },
-    {
+    /* {
         id: 2,
         title: 'TBA',
         description:
             '',
         gitHubLink: '',
+        skillIcons: [],
     },
     {
         id: 3,
@@ -21,6 +23,7 @@ const projectData = [
         description:
             '',
         gitHubLink: '',
+        skillIcons: [],
     },
     {
         id: 4,
@@ -28,6 +31,7 @@ const projectData = [
         description:
             '',
         gitHubLink: '',
+        skillIcons: [],
     },
     {
         id: 5,
@@ -35,7 +39,8 @@ const projectData = [
         description:
             '',
         gitHubLink: '',
-    },
+        skillIcons: [],
+    }, */
 ];
 
 const Projects = () => {
@@ -47,12 +52,14 @@ const Projects = () => {
                     {projectData && projectData.map((project) => (
                         <div className="project-card" key={project.id}>
                             <div className="project-header">
-                                <Image src="/images/icongitrepository.svg" width={35} height={35} />
                                 <div className="small-icons">
-                                    <a href={project.gitHubLink}><Image src="/images/icongithub.svg" width={35} height={35} /></a>
+                                    {project.skillIcons.map(icon =>
+                                        <Image src={icon} width={35} height={35} />)}
                                 </div>
                             </div>
-                            <h3>{project.title}</h3>
+                            <a href={project.gitHubLink}>
+                                <h3>{project.title}</h3>
+                            </a>
                             <p>{project.description}</p>
                         </div>
                     ))
