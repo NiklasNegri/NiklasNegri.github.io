@@ -9,22 +9,24 @@ const projectData = [
         gitHubLink: 'https://github.com/NiklasNegri/NiklasNegri.github.io',
         skillIcons: ["/images/iconnextjs.svg", "/images/iconjs.svg", "/images/iconcss.svg"]
     },
-    /* {
+    {
         id: 2,
-        title: 'TBA',
+        title: 'Stefans Super Shop',
         description:
-            '',
-        gitHubLink: '',
-        skillIcons: [],
+            'Group project in school where we simulated agile development in a team of 4, I was the backend developer and used EFCore to setup a database for the site.',
+        gitHubLink: 'https://github.com/NiklasNegri/StefansSuperShopRazorPagesGrupp4',
+        skillIcons: ["/images/iconcsharp.svg", "/images/iconefcore.png", "/images/iconsql.png"],
     },
+    
     {
         id: 3,
-        title: 'TBA',
+        title: 'Movie MVC Azure',
         description:
-            '',
-        gitHubLink: '',
-        skillIcons: [],
+            'Group project in school where we created a simple MVC application to display movies (like IMDB) and host on Azure App Service with an Azure SQL database.',
+        gitHubLink: 'https://github.com/NiklasNegri/MolnkursMVC',
+        skillIcons: ["/images/iconcsharp.svg", "/images/iconefcore.png",  "/images/iconazure.svg"],
     },
+    /* 
     {
         id: 4,
         title: 'TBA',
