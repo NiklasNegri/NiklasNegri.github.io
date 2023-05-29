@@ -12,13 +12,11 @@ body {
   color: #DADADB;
   width: 900px;
   margin: 0 auto;
-  padding: 0 0;
 }
 
 @media screen and (max-width: 768px) {
   body {
     width: 100%;
-    padding: 0 2rem;
   }
 }
 
@@ -39,13 +37,7 @@ li {
   align-items: center;
   justify-content: space-evenly;
   background-color: #525356;
-  padding-bottom: 5px;
-}
-
-@media screen and (max-width: 768px) {
-  hr {
-    width: 100%;
-  }
+  padding: 10px;
 }
 
 .social_icons {
@@ -61,13 +53,9 @@ li {
   transition: all 0.5s ease-in-out;
 }
 
-.social_icons a:hover {
-  color: #DADADB;
-}
-
 /* About */
 .about-container {
-  padding: 2rem 0;
+  padding: 0 2rem;
 }
 
 .about-container h2 {
@@ -93,7 +81,7 @@ li {
 }
 
 .about-container .flex-about .about-img {
-  width: 50%;
+  width: 100%;
 }
 
 .about-container .flex-about .about-img .profile-img {
@@ -115,12 +103,13 @@ li {
 
   .about-container .flex-about .about-img {
     width: 100%;
+    margin-left: 200px;
   }
 }
 
 /* Experience */
 .experience-container {
-  padding: 2rem 0;
+  padding: 0 2rem;
 }
 
 .experience-container h2 {
@@ -147,12 +136,8 @@ li {
 }
 
 .experience-container .flex-experience .experience-title {
-  margin-bottom: auto;
-  width: 50%;
-}
-
-.experience-container .flex-experience .experience-text {
-  width: 50%;
+  margin-bottom: 25px;
+  width: 75%;
 }
 
 .experience-container .flex-experience .experience-text p {
@@ -161,9 +146,15 @@ li {
   margin-bottom: 1rem;
 }
 
+@media screen and (max-width: 768px) {
+  .experience-container .flex-experience {
+    flex-direction: column;
+  }
+}
+
 /* Skills */
 .skills-container {
-  padding: 2rem 0;
+  padding: 0 0rem;
 }
 
 .skills-container h2 {
@@ -181,6 +172,7 @@ li {
 @media screen and (max-width: 768px) {
   .skills-container .grid-skills {
     grid-template-columns: repeat(2, 1fr);
+    padding: 10px
   }
 }
 
@@ -220,7 +212,7 @@ li {
 
 /* Projects */
 .projects-container {
-  padding: 2rem 0;
+  padding: 0 2rem;
 }
 
 .projects-container h2 {
@@ -288,7 +280,7 @@ li {
 
 /* contact */
 .contact-container {
-  padding: 2rem 0 4rem;
+  padding: 0 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
