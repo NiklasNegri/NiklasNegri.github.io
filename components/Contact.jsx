@@ -4,6 +4,9 @@ const Contact = () => {
     return (
         <div id="contact-section">
             <div className="contact-container">
+                <h2>Upcoming</h2>
+                <h3>Norway vs Sweden</h3>
+                <p>Fullstack application written with Nextjs as frontend with C# backend.</p>
                 <h2>Contact Me</h2>
                 <p>I am available on my mobile during regular work hours every week at 076-792-4586</p>
                 <p>or you can send me an email at niklas.negri@gmail.com or by clicking the icon below</p>

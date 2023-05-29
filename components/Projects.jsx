@@ -63,8 +63,7 @@ const Projects = () => {
                         </a>
                         <p>{project.description}</p>
                     </div>
-                ))
-                }
+                ))}
             </div>
         </div>
     )
