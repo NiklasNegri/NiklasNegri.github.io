@@ -28,8 +28,8 @@ const About = () => {
                 <div className="about-img">
                     <Image src="/images/profile.jpeg" className="profile-img" width={300} height={500} />
                 </div>
-                <div id="experience-section" />
             </div>
+            <div id="experience-section" />
         </div>
     )
 }
