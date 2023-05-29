@@ -37,7 +37,12 @@ li {
   align-items: center;
   justify-content: space-evenly;
   background-color: #525356;
-  padding: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .nav-container {
+    padding: 10px
+  }
 }
 
 .social_icons {
@@ -56,6 +61,7 @@ li {
 /* About */
 .about-container {
   padding: 0 2rem;
+  margin-bottom: 15px;
 }
 
 .about-container h2 {
@@ -112,6 +118,10 @@ li {
   padding: 0 2rem;
 }
 
+.experience-container hr {
+  width: auto;
+}
+
 .experience-container h2 {
   font-size: 2rem;
   font-weight: 600;
@@ -131,13 +141,12 @@ li {
 .experience-container .flex-experience {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   gap: 0 2rem;
+  margin-bottom: 20px;
 }
 
 .experience-container .flex-experience .experience-title {
-  margin-bottom: 25px;
-  width: 75%;
+  width: 50%;
 }
 
 .experience-container .flex-experience .experience-text p {
@@ -150,11 +159,16 @@ li {
   .experience-container .flex-experience {
     flex-direction: column;
   }
+
+  .experience-container .flex-experience .experience-title {
+    margin-bottom: 20px;
+  }
 }
 
 /* Skills */
 .skills-container {
   padding: 0 0rem;
+  margin-bottom: 15px;
 }
 
 .skills-container h2 {
