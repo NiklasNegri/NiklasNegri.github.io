@@ -45,26 +45,24 @@ const projectData = [
 
 const Projects = () => {
     return (
-        <div id="projects-section">
-            <div className="projects-container">
-                <h2>Projects</h2>
-                <div className="projects-grid">
-                    {projectData && projectData.map((project) => (
-                        <div className="project-card" key={project.id}>
-                            <div className="project-header">
-                                <div className="small-icons">
-                                    {project.skillIcons.map(icon =>
-                                        <Image src={icon} width={35} height={35} />)}
-                                </div>
+        <div className="projects-container">
+            <h2>Projects</h2>
+            <div className="projects-grid">
+                {projectData && projectData.map((project) => (
+                    <div className="project-card" key={project.id}>
+                        <div className="project-header">
+                            <div className="small-icons">
+                                {project.skillIcons.map(icon =>
+                                    <Image src={icon} width={35} height={35} />)}
                             </div>
-                            <a href={project.gitHubLink}>
-                                <h3>{project.title}</h3>
-                            </a>
-                            <p>{project.description}</p>
                         </div>
-                    ))
-                    }
-                </div>
+                        <a href={project.gitHubLink}>
+                            <h3>{project.title}</h3>
+                        </a>
+                        <p>{project.description}</p>
+                    </div>
+                ))
+                }
             </div>
         </div>
     )

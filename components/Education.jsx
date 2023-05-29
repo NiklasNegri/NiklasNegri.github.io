@@ -1,6 +1,5 @@
 const Education = () => {
     return (
-        <div id="education-section">
             <div className="experience-container">
                 <div className="flex-experience">
                     <div className="experience-title">
@@ -14,10 +13,10 @@ const Education = () => {
                         <p>• Basic frontend with HTML, CSS and JavaScript and some work in Vue</p>
                         <p>• Agile development in Azure with Azure Board and Pipelines for CI/CD</p>
                         <p>• Hosting an MVC application with ASP.NET Core to Azure Webb App Service</p>
+                        <div id="skills-section" />
                     </div>
                 </div>
             </div>
-        </div>
     )
 }
 

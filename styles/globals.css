@@ -37,11 +37,12 @@ li {
   align-items: center;
   justify-content: space-evenly;
   background-color: #525356;
+  padding-bottom: 5px;
 }
 
 @media screen and (max-width: 768px) {
   .nav-container {
-    padding: 10px
+    padding-bottom: 5px;
   }
 }
 
@@ -109,7 +110,6 @@ li {
 
   .about-container .flex-about .about-img {
     width: 100%;
-    margin-left: 200px;
   }
 }
 
@@ -175,12 +175,13 @@ li {
   font-size: 2rem;
   font-weight: 600;
   margin-bottom: 1rem;
+  margin-left: 35px
 }
 
 .skills-container .grid-skills {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
+  gap: 1rem;
 }
 
 @media screen and (max-width: 768px) {
